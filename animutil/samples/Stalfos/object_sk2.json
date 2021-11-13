@@ -1,0 +1,119 @@
+{
+  "segmentDef": {
+    "Segments": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "object_sk2",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "object_sk2": {
+    "Type": "NPC",
+    "Animations": [
+      {
+        "Name": "anim_0x000444",
+        "Offset": "0x06000444"
+      },
+      {
+        "Name": "anim_0x001420",
+        "Offset": "0x06001420"
+      },
+      {
+        "Name": "anim_0x001978",
+        "Offset": "0x06001978"
+      },
+      {
+        "Name": "anim_0x001C20",
+        "Offset": "0x06001C20"
+      },
+      {
+        "Name": "anim_0x002188",
+        "Offset": "0x06002188"
+      },
+      {
+        "Name": "anim_0x0026D4",
+        "Offset": "0x060026D4"
+      },
+      {
+        "Name": "anim_0x00316C",
+        "Offset": "0x0600316C"
+      },
+      {
+        "Name": "anim_0x0081B4",
+        "Offset": "0x060081B4"
+      },
+      {
+        "Name": "anim_0x008604",
+        "Offset": "0x06008604"
+      },
+      {
+        "Name": "anim_0x009A90",
+        "Offset": "0x06009A90"
+      },
+      {
+        "Name": "anim_0x009E50",
+        "Offset": "0x06009E50"
+      },
+      {
+        "Name": "anim_0x00A324",
+        "Offset": "0x0600A324"
+      },
+      {
+        "Name": "anim_0x00A99C",
+        "Offset": "0x0600A99C"
+      },
+      {
+        "Name": "anim_0x00B00C",
+        "Offset": "0x0600B00C"
+      },
+      {
+        "Name": "anim_0x00B4E4",
+        "Offset": "0x0600B4E4"
+      },
+      {
+        "Name": "anim_0x00BE4C",
+        "Offset": "0x0600BE4C"
+      },
+      {
+        "Name": "anim_0x00C438",
+        "Offset": "0x0600C438"
+      },
+      {
+        "Name": "anim_0x00C8A0",
+        "Offset": "0x0600C8A0"
+      },
+      {
+        "Name": "anim_0x00DCF0",
+        "Offset": "0x0600DCF0"
+      },
+      {
+        "Name": "anim_0x00E2B0",
+        "Offset": "0x0600E2B0"
+      },
+      {
+        "Name": "anim_0x00E7E4",
+        "Offset": "0x0600E7E4"
+      }
+    ],
+    "Skeletons": [
+      {
+        "isFlex": false,
+        "isLOD": false,
+        "Name": "skl_0x007C28",
+        "Offset": "0x06007C28"
+      }
+    ]
+  }
+}

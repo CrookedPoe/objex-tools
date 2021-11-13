@@ -1,0 +1,129 @@
+{
+    "segmentDef": {
+      "Segments": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "object_sa",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "extractParams": {
+        "isEnabled": true,
+        "romParams": [
+            "oot_u10_d.z64",
+            "6f7957f08d564ae255b25d54b9eb6774"
+        ],
+        "keepFiles": false,
+        "filesToExtract": [
+            {
+                "Name": "object_sa.zobj",
+                "vromStart": "0x014C3000",
+                "vromEnd": "0x014D8230"
+            }
+        ]
+    },
+    "convertParams": {
+        "isEnabled": true,
+        "convertToType": "Link",
+        "limbMapFromTo": [
+            0, 0,
+            1, 1,
+            -1, 2,
+            5, 3,
+            6, 4,
+            7, 5,
+            2, 6,
+            3, 7,
+            4, 8,
+            -1, 9,
+            15, 10,
+            -1, 11,
+            -1, 12,
+            9, 13,
+            10, 14,
+            11, 15,
+            12, 16,
+            13, 17,
+            14, 18,
+            -1, 19,
+            8, 20
+        ],
+        "adjustDegrees": [
+           0, 0, 0,
+           0, 0, 0,
+           0, 0, 0,
+           0, 0, 0,
+           0, 0, 0,
+           0, 0, 0,
+           0, 0, 0,
+           0, 0, 0,
+           0, 0, 0,
+           0, 0, 0,
+           0, 0, 90,
+           0, 0, 110,
+           0, 0, 0,
+           0, 0, 0,
+           0, 0, 0,
+           0, 0, -90,
+           0, 0, 0,
+           0, 0, 0,
+           0, 0, -90,
+           -90, 150, 0,
+           -90, 0, -90
+        ]
+    },
+    "object_sa": {
+        "Type": "NPC",
+        "Animations": [
+            { "Offset": "0x06001334", "Name": "km_saria"},
+            { "Offset": "0x06001D50", "Name": "sa_hanasi_modoru"},
+            { "Offset": "0x060021D8", "Name": "sa_matsu"},
+            { "Offset": "0x0600BAEC", "Name": "sa_okarina"},
+            { "Offset": "0x0600C500", "Name": "sa_okarina_hanasi"},
+            { "Offset": "0x0600CFD8", "Name": "sa_umai"},
+            { "Offset": "0x0600D7E8", "Name": "sa_umai_okarina"},
+            { "Offset": "0x0600DF80", "Name": "saria_banzai"},
+            { "Offset": "0x0600E500", "Name": "saria_banzai_wait"},
+            { "Offset": "0x0600E908", "Name": "saria_demo_aogimi"},
+            { "Offset": "0x0600EBB0", "Name": "saria_demo_run"},
+            { "Offset": "0x0600F1D4", "Name": "saria_demo_yahho"},
+            { "Offset": "0x0600F580", "Name": "saria_end_miorosi"},
+            { "Offset": "0x0600FCE0", "Name": "saria_end_modoru"},
+            { "Offset": "0x0600FFD4", "Name": "saria_end_wait"},
+            { "Offset": "0x06010C44", "Name": "saria_furikaeru"},
+            { "Offset": "0x0601113C", "Name": "saria_hasi_wait"},
+            { "Offset": "0x06011580", "Name": "saria_kihon_to_matteru"},
+            { "Offset": "0x0601186C", "Name": "saria_kihon_to_odoroki"},
+            { "Offset": "0x06011C38", "Name": "saria_kihon_to_okoru"},
+            { "Offset": "0x06012100", "Name": "saria_matteru_wait"},
+            { "Offset": "0x0601291C", "Name": "saria_odoroki_to_kihon"},
+            { "Offset": "0x06013008", "Name": "saria_odoroki_wait"},
+            { "Offset": "0x060135EC", "Name": "saria_ok_ageru"},
+            { "Offset": "0x06013CD8", "Name": "saria_ok_ageru_wait"},
+            { "Offset": "0x060140BC", "Name": "saria_ok_motsu_wait"},
+            { "Offset": "0x06014470", "Name": "saria_okoru_wait"},
+            { "Offset": "0x06014850", "Name": "saria_tomodachi"},
+            { "Offset": "0x06015220", "Name": "saria_uresi"}
+        ],
+        "Skeletons": [
+            {
+                "isFlex": true,
+                "isLOD": false,
+                "Name": "skl_saria",
+                "Offset": "0x0600B1A0"
+            }
+        ]
+    }
+}

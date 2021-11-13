@@ -50,3 +50,17 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Zelda
+*.zobj
+*.anim
+*.skel
+*.z64
+*.bak
+
+# Other
+*.tar.gz
+.vscode/
+bin/
+obj/
+json_spec.md
