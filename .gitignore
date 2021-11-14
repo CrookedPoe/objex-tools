@@ -60,7 +60,7 @@ dkms.conf
 
 # Other
 *.tar.gz
-.vscode/
 bin/
 obj/
-json_spec.md
+.vscode/
+../.vscode/
