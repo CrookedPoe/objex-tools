@@ -85,7 +85,7 @@
         ]
     },
     "exportParams": {
-        "objexVersion": 1,
+        "objexVersion": 2,
         "exportSkel": true,
         "exportAnim": true,
         "exportBinary": false,
