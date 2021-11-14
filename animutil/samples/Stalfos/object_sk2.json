@@ -19,6 +19,63 @@
       ""
     ]
   },
+  "convertParams": {
+    "isEnabled": true,
+    "convertToType": "Link",
+    "limbMapFromTo": [
+        0, 0,
+        38, 1,
+        -1, 2,
+        51, 3,
+        52, 4,
+        53, 5,
+        42, 6,
+        43, 7,
+        44, 8,
+        1, 9,
+        5, 10,
+        -1, 11,
+        -1, 12,
+        21, 13,
+        23, 14,
+        24, 15,
+        30, 16,
+        31, 17,
+        32, 18,
+        -1, 19,
+        -1, 20
+    ],
+    "adjustDegrees": [
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 110,
+       0, 0, 90,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       0, 0, 0,
+       -90, 150, 0,
+       0, 0, 0
+    ]
+  },
+  "exportParams": {
+    "objexVersion": 2,
+    "exportSkel": true,
+    "exportAnim": true,
+    "exportBinary": true,
+    "exportCObject": false
+  },
   "object_sk2": {
     "Type": "NPC",
     "Animations": [

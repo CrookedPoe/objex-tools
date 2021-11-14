@@ -351,7 +351,7 @@ recheck_no_json:
                     /* NPC Animations */
                     Directory.CreateDirectory($"{subFolder}/animations");
                     for (int i = 0; i < animations.Count; i++) {
-                        NPCAnimation.Export(JSON.exportParams.objexVersion, animations[i], $"{subFolder}/animations/{animations[i].Name}.anim");
+                        NPCAnimation.Export(JSON.exportParams, animations[i], $"{subFolder}/animations/{animations[i].Name}.anim");
                         MyConsole.WriteLine("ADD", $"{animations[i].Name}.anim");
                     }
                 }
@@ -361,8 +361,11 @@ recheck_no_json:
                     /* Link Animations */
                     Directory.CreateDirectory($"{subFolder}/link_animations");
                     for (int i = 0; i < link_animations.Count; i++) {
-                        LinkAnimation.Export(JSON.exportParams.objexVersion, link_animations[i], $"{subFolder}/link_animations/{link_animations[i].Name}.anim");
+                        LinkAnimation.Export(JSON.exportParams, link_animations[i], $"{subFolder}/link_animations/{link_animations[i].Name}");
                         MyConsole.WriteLine("ADD", $"{link_animations[i].Name}.anim");
+                        if (JSON.exportParams.exportBinary) {
+                            MyConsole.WriteLine("ADD", $"{link_animations[i].Name}.bin");
+                        }
                     }
                 }
             }

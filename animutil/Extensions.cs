@@ -15,6 +15,14 @@ namespace animutil
             }
             return ret;
         }
+
+        public static void WriteBEBuffer(this byte[] buf, byte[] write, int org)
+        {
+            for (int index = 0; index < write.Length; index++)
+            {
+                buf[org + index] = write[index];
+            }
+        }
         public static dynamic ReadLEBuffer(this byte[] buf, int count, int org)
         {
             dynamic ret = 0;
@@ -24,6 +32,14 @@ namespace animutil
                 ret |= buf[org + index];
             }
             return ret;
+        }
+
+        public static void WriteLEBuffer(this byte[] buf, byte[] write, int org)
+        {
+            for (int index = write.Length - 1; index > -1; index--)
+            {
+                buf[org + index] = write[index];
+            }
         }
 
         public static byte[] BlockCopy(this byte[] buf, int org, int size)
@@ -61,9 +77,19 @@ namespace animutil
             return (Byte)(buf[org]);
         }
 
+        public static void WriteUByte(this byte[] buf, Byte write, int org)
+        {
+            buf[org] = write;
+        }
+
         public static SByte ReadSByte(this byte[] buf, int org)
         {
             return (SByte)(buf[org]);
+        }
+
+        public static void WriteSByte(this byte[] buf, SByte write, int org)
+        {
+            buf[org] = (Byte)write;
         }
 
         public static Int16 BEReadInt16(this byte[] buf, int org)
@@ -71,9 +97,33 @@ namespace animutil
             return (Int16)(ReadBEBuffer(buf, 2, org));
         }
 
+        public static void BEWriteInt16(this byte[] buf, Int16 write, int org)
+        {
+            byte[] s = new byte[2];
+            if (BitConverter.IsLittleEndian) {
+                s = BitConverter.GetBytes(write);
+                Array.Reverse(s);
+            } else {
+                s = BitConverter.GetBytes(write);
+            }
+            WriteBEBuffer(buf, s, org);
+        }
+
         public static UInt16 BEReadUInt16(this byte[] buf, int org)
         {
             return (UInt16)(ReadBEBuffer(buf, 2, org));
+        }
+
+        public static void BEWriteUInt16(this byte[] buf, UInt16 write, int org)
+        {
+            byte[] s = new byte[2];
+            if (BitConverter.IsLittleEndian) {
+                s = BitConverter.GetBytes(write);
+                Array.Reverse(s);
+            } else {
+                s = BitConverter.GetBytes(write);
+            }
+            WriteBEBuffer(buf, s, org);
         }
 
         public static Int16 LEReadInt16(this byte[] buf, int org)
@@ -81,9 +131,33 @@ namespace animutil
             return (Int16)(ReadLEBuffer(buf, 2, org));
         }
 
+        public static void LEWriteInt16(this byte[] buf, Int16 write, int org)
+        {
+            byte[] s = new byte[2];
+            if (BitConverter.IsLittleEndian) {
+                s = BitConverter.GetBytes(write);
+                Array.Reverse(s);
+            } else {
+                s = BitConverter.GetBytes(write);
+            }
+            WriteLEBuffer(buf, s, org);
+        }
+
         public static UInt16 LEReadUInt16(this byte[] buf, int org)
         {
             return (UInt16)(ReadLEBuffer(buf, 2, org));
+        }
+
+        public static void LEWriteUInt16(this byte[] buf, UInt16 write, int org)
+        {
+            byte[] s = new byte[2];
+            if (BitConverter.IsLittleEndian) {
+                s = BitConverter.GetBytes(write);
+                Array.Reverse(s);
+            } else {
+                s = BitConverter.GetBytes(write);
+            }
+            WriteLEBuffer(buf, s, org);
         }
 
         public static Int32 BEReadInt32(this byte[] buf, int org)
