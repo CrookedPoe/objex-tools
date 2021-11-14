@@ -54,7 +54,7 @@ The explains what kind of file is being processed. Valid options are `"Link"`, `
 This is an array of objects (internally `AnimationJSONEntry`) to define the animations that are to be extracted. Each entry should contain a `Name` field and an `Offset` field, though it doesn't matter which order these are in.
 
 #### `Skeletons`
-This is an array of objects (internally `SkeletonsJSONEntry`) to define the skeletons that are to be extracted. Each entry should contain an `isFlex` boolean, an `isLOD` boolean, a `Name` field and an `Offset` field, though it doesn't matter which order these are in. All of these parameters are detected automatically in a generated file, but if being written manually it's easy to judge in a hex editor.
+This is an array of objects (internally `SkeletonJSONEntry`) to define the skeletons that are to be extracted. Each entry should contain an `isFlex` boolean, an `isLOD` boolean, a `Name` field and an `Offset` field, though it doesn't matter which order these are in. All of these parameters are detected automatically in a generated file, but if being written manually it's easy to judge in a hex editor.
 
 ---
 ## Future Plans and To-Do
@@ -64,4 +64,4 @@ This is an array of objects (internally `SkeletonsJSONEntry`) to define the skel
 - Converting Link animations to Modern NPC format (for those with hardcore NPC energy)
 - Converting Link and Modern NPC animations to the Legacy format (for those beta-enthusiasts with hardcore NPC energy)
 - External segments and animation data banks (For those hardcore modular projects)
-- Animation tweening (For this [hardore dude](https://www.youtube.com/watch?v=wA5iEVHP2os))
+- Animation tweening (For this [hardcore dude](https://www.youtube.com/watch?v=wA5iEVHP2os))
