@@ -153,22 +153,44 @@ namespace animutil
             return skeletons;
         }
 
-        private static void WriteTree(StreamWriter f, dynamic[] l, int n) {
+        private static void WriteTree(int objexVersion, StreamWriter f, dynamic[] l, int n) {
+            int v = objexVersion;
             string name = $"\"limb_{n.ToString("D2")}\"";
-            string pos = $"{l[n].Position.X.ToString("F2")} {l[n].Position.Y.ToString("F2")} {l[n].Position.Z.ToString("F2")}";
+            string pos = String.Empty;
+            if (v == 1) {
+                pos = $"{{{l[n].Position.X.ToString("F2")} {l[n].Position.Y.ToString("F2")} {l[n].Position.Z.ToString("F2")}}}";
+            } else if (v == 2) {
+                pos = $"{l[n].Position.X.ToString("F2")} {l[n].Position.Y.ToString("F2")} {l[n].Position.Z.ToString("F2")}";
+            } else {
+                pos = $"{l[n].Position.X.ToString("F2")} {l[n].Position.Y.ToString("F2")} {l[n].Position.Z.ToString("F2")}";
+            }
 
             f.WriteLine($"{new String('\t', _stack++)}+ {name} {pos}");
             if (l[n].Child > -1)
-                WriteTree(f, l, l[n].Child);
+                WriteTree(v, f, l, l[n].Child);
             f.WriteLine($"{new String('\t', --_stack)}-");
             if (l[n].Sibling > -1)
-                WriteTree(f, l, l[n].Sibling);
+                WriteTree(v, f, l, l[n].Sibling);
         }
-        public static void Export(Skeleton skeleton, string filePath)
+        public static void Export(int objexVersion, Skeleton skeleton, string filePath)
         {
-            using (StreamWriter f = new StreamWriter(File.Create(filePath))) {
-                f.WriteLine($"newskel \"{skeleton.Header.Name}\" \"{((skeleton.isLOD) ? "z64player" : "z64npc")}\"");
-                WriteTree(f, skeleton.LimbTable, 0);
+            int v = objexVersion;
+check_objex_v:
+            if (v == 1)
+            {
+                using (StreamWriter f = new StreamWriter(File.Create(filePath))) {
+                    f.WriteLine($"limbs {skeleton.LimbTable.Length}");
+                    WriteTree(v, f, skeleton.LimbTable, 0);
+                }
+            } else if (v == 2) {
+                using (StreamWriter f = new StreamWriter(File.Create(filePath))) {
+                    f.WriteLine($"newskel \"{skeleton.Header.Name}\" \"{((skeleton.isLOD) ? "z64player" : "z64npc")}\"");
+                    WriteTree(v, f, skeleton.LimbTable, 0);
+                }
+            } else {
+                MyConsole.WriteLine("WARN", "Invalid OBJEX version specified, defaulting to OBJEX Version 2.");
+                v = 2;
+                goto check_objex_v;
             }
         }
     }
