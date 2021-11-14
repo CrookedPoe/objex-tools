@@ -49,7 +49,10 @@ namespace animutil
     public class Rotation3D
     {
         private double _toDegrees = (65536 / 360);
+        private double _degreesToRadians = (Math.PI / 180);
         public Vector3 Degrees { get; set; }
+
+        public Vector3 Radians { get; set; }
 
         public Rotation3D() { }
         public Rotation3D(Int16 X, Int16 Y, Int16 Z)
@@ -58,19 +61,31 @@ namespace animutil
             Degrees.X /= Convert.ToSingle(_toDegrees);
             Degrees.Y /= Convert.ToSingle(_toDegrees);
             Degrees.Z /= Convert.ToSingle(_toDegrees);
+            Radians = EulerToRadian(this);
         }
 
         public Rotation3D(Vector3 vec, bool isDegrees)
         {
             if (isDegrees) {
                 Degrees = new Vector3(vec.X, vec.Y, vec.Z);
+                Radians = EulerToRadian(this);
             } else
             {
                 Degrees = new Vector3(vec.X, vec.Y, vec.Z);
                 Degrees.X /= Convert.ToSingle(_toDegrees);
                 Degrees.Y /= Convert.ToSingle(_toDegrees);
                 Degrees.Z /= Convert.ToSingle(_toDegrees);
+                Radians = EulerToRadian(this);
             }
+        }
+
+        public Vector3 EulerToRadian(Rotation3D r)
+        {
+            Vector3 newRad = new Vector3();
+            newRad.X = r.Degrees.X * Convert.ToSingle(_degreesToRadians);
+            newRad.Y = r.Degrees.Y * Convert.ToSingle(_degreesToRadians);
+            newRad.Z = r.Degrees.Z * Convert.ToSingle(_degreesToRadians);
+            return newRad;
         }
 
         public static Rotation3D AdjustRotation(Rotation3D r, float X, float Y, float Z)

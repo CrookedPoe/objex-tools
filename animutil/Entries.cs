@@ -121,7 +121,26 @@ namespace animutil
                 adjustDegrees[1, i + 2] = Convert.ToSingle(adjust[i + 2]);
             }*/
         }
+    }
 
+    public class ExporterParameters
+    {
+        public int objexVersion { get; set; }
+        public bool exportSkel { get; set; }
+        public bool exportAnim { get; set; }
+        public bool exportBinary { get; set; }
+        public bool exportCObject { get; set; }
+
+        public ExporterParameters() { }
+
+        public ExporterParameters(JToken json)
+        {
+            objexVersion = Convert.ToInt32(json["objexVersion"]);
+            exportSkel = Convert.ToBoolean(json["exportSkel"]);
+            exportAnim = Convert.ToBoolean(json["exportAnim"]);
+            exportBinary = Convert.ToBoolean(json["exportBinary"]);
+            exportCObject = Convert.ToBoolean(json["exportCObject"]);
+        }
     }
 
     public class AnimationJSONEntry
@@ -188,6 +207,8 @@ namespace animutil
         public ExtractionParameters extractParams { get; set; }
         public bool hasExtractParams { get; set; }
         public ConverterParameters convertParams { get; set; }
+        public bool hasExportParams { get; set; }
+        public ExporterParameters exportParams { get; set; }
         public bool hasConvertParams { get; set; }
 
         public InputJSON() { }
@@ -217,6 +238,14 @@ namespace animutil
             } else {
                 convertParams = new ConverterParameters();
                 hasConvertParams = false;
+            }
+
+            if (json.ContainsKey("exportParams")) {
+                exportParams = new ExporterParameters(json["exportParams"]);
+                hasExportParams = true;
+            } else {
+                exportParams = new ExporterParameters();
+                hasExportParams = false;
             }
         }
     }

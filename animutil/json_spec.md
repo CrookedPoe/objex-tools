@@ -44,6 +44,26 @@ This is a simple array of numbers where for every pair, it maps a 0-index limb n
 Limb rotations are not always 1:1, so some adjustments may have to be made. This integer array is processed as a set of XYZ rotations that are applied to the final converted animation. There should be one for each limb, even if no adjustment is to be made. (See `/samples/Saria/oot_u10.json` for an example)
 
 ---
+
+## `exportParams`
+This will define the parameters for exporting animations and skeletons.
+
+#### `objexVersion`
+This is an integer where you will define which version of the OBJEX spec you would like to use. Valid options are `1` (for the old version) or `2` for the most recent version.
+
+#### `exportSkel`
+This is a boolean to determine whether or not the skeleton will be exported.
+
+#### `exportAnim`
+This is a boolean to determine whether or not `.anim` files will be exported.
+
+#### `exportBinary`
+This is a boolean to determine whether or not the animations and skeleton will be exported as a binary file.
+
+#### `exportCObject`
+This is a boolean to determine whether or not the animations and skeleton will be exported as a C-compatible `.o` file.
+
+---
 Every entry following these parameters should be that of an object named the same as it is defined in `segmentDef`.
 
 #### `Type`

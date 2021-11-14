@@ -84,6 +84,13 @@
            -90, 0, -90
         ]
     },
+    "exportParams": {
+        "objexVersion": 1,
+        "exportSkel": true,
+        "exportAnim": true,
+        "exportBinary": false,
+        "exportCObject": false
+    },
     "object_sa": {
         "Type": "NPC",
         "Animations": [

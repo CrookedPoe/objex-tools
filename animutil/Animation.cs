@@ -119,18 +119,40 @@ namespace animutil
             return animations;
         }
 
-        public static void Export(NPCAnimation anim, string filePath)
+        public static void Export(int objexVersion, NPCAnimation anim, string filePath)
         {
-            using (StreamWriter f = new StreamWriter(File.Create(filePath))) {
-                f.WriteLine($"newskel \"{anim.Skeleton.Header.Name}\" \"{anim.Name}\" {anim.FrameCount}");
-                for (int i = 0; i < anim.AnimationFrames.Length; i++) {
-                    f.WriteLine($"# Frame {i + 1}");
-                    NPCFrame frame = anim.AnimationFrames[i];
-                    f.WriteLine($"loc {frame.RootTranslation.X} {frame.RootTranslation.Y} {frame.RootTranslation.Z}");
-                    for (int j = 0; j < frame.LimbRotations.Length; j++) {
-                        f.WriteLine($"rot {frame.LimbRotations[j].Degrees.X.ToString("F2")} {frame.LimbRotations[j].Degrees.Y.ToString("F2")} {frame.LimbRotations[j].Degrees.Z.ToString("F2")}");
+            int v = objexVersion;
+check_objex_v:
+            if (v == 1)
+            {
+                using (StreamWriter f = new StreamWriter(File.Create(filePath))) {
+                    f.WriteLine("anim_total 1");
+                    f.WriteLine($"frames {anim.FrameCount} \"{anim.Name}\"");
+                    for (int i = 0; i < anim.AnimationFrames.Length; i++) {
+                        NPCFrame frame = anim.AnimationFrames[i];
+                        f.WriteLine($"l {frame.RootTranslation.X} {frame.RootTranslation.Y} {frame.RootTranslation.Z}");
+                        for (int j = 0; j < frame.LimbRotations.Length; j++) {
+                            f.WriteLine($"r {frame.LimbRotations[j].Radians.X.ToString("F3")} {frame.LimbRotations[j].Radians.Y.ToString("F3")} {frame.LimbRotations[j].Radians.Z.ToString("F3")}");
+                        }
                     }
                 }
+            } else if (v == 2)
+            {
+                using (StreamWriter f = new StreamWriter(File.Create(filePath))) {
+                    f.WriteLine($"newskel \"{anim.Skeleton.Header.Name}\" \"{anim.Name}\" {anim.FrameCount}");
+                    for (int i = 0; i < anim.AnimationFrames.Length; i++) {
+                        f.WriteLine($"# Frame {i + 1}");
+                        NPCFrame frame = anim.AnimationFrames[i];
+                        f.WriteLine($"loc {frame.RootTranslation.X} {frame.RootTranslation.Y} {frame.RootTranslation.Z}");
+                        for (int j = 0; j < frame.LimbRotations.Length; j++) {
+                            f.WriteLine($"rot {frame.LimbRotations[j].Degrees.X.ToString("F2")} {frame.LimbRotations[j].Degrees.Y.ToString("F2")} {frame.LimbRotations[j].Degrees.Z.ToString("F2")}");
+                        }
+                    }
+                }
+            } else {
+                MyConsole.WriteLine("WARN", "Invalid OBJEX version specified, defaulting to OBJEX Version 2.");
+                v = 2;
+                goto check_objex_v;
             }
         }
     }
@@ -234,9 +256,27 @@ namespace animutil
             }
         }
 
-        public static void Export(LinkAnimation anim, string filePath)
+        public static void Export(int objexVersion, LinkAnimation anim, string filePath)
         {
-            using (StreamWriter f = new StreamWriter(File.Create(filePath))) {
+            int v = objexVersion;
+check_objex_v:
+            if (v == 1)
+            {
+                using (StreamWriter f = new StreamWriter(File.Create(filePath))) {
+                f.WriteLine("anim_total 1");
+                f.WriteLine($"frames {anim.FrameCount} \"{anim.Name}\"");
+                for (int i = 0; i < anim.AnimationFrames.Length; i++) {
+                    LinkFrame frame = anim.AnimationFrames[i];
+                    f.WriteLine($"l {frame.RootTranslation.X} {frame.RootTranslation.Y} {frame.RootTranslation.Z}");
+                    for (int j = 0; j < frame.LimbRotations.Length; j++) {
+                        f.WriteLine($"r {frame.LimbRotations[j].Radians.X.ToString("F3")} {frame.LimbRotations[j].Radians.Y.ToString("F3")} {frame.LimbRotations[j].Radians.Z.ToString("F3")}");
+                    }
+                    //f.WriteLine($"{frame.Face}");
+                }
+            }
+            } else if (v == 2)
+            {
+                using (StreamWriter f = new StreamWriter(File.Create(filePath))) {
                 f.WriteLine($"newskel \"skeleton_name\" \"{anim.Name}\" {anim.FrameCount}");
                 for (int i = 0; i < anim.AnimationFrames.Length; i++) {
                     f.WriteLine($"# Frame {i + 1}");
@@ -248,6 +288,12 @@ namespace animutil
                     f.WriteLine($"{frame.Face}");
                 }
             }
+            } else {
+                MyConsole.WriteLine("WARN", "Invalid OBJEX version specified, defaulting to OBJEX Version 2.");
+                v = 2;
+                goto check_objex_v;
+            }
         }
+
     }
 }
